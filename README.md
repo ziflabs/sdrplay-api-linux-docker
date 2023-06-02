@@ -19,7 +19,20 @@ RUN cd sdrplay-api-linux-docker && ./install_lib_DOCKER.sh
 Because we do not install the SDRplay `systemd` service when building the image (as it's generally not recommended to have `systemd` in Docker containers), the SDRplay API service must be manually started after launching the container. If something like [SoapySDR](https://github.com/pothosware/SoapySDR/wiki) is installed as well, you can scan for an attached SDR to check that the API service is functioning:
 
 ```
-COMMANDS HERE
+dev@34c615cd3324:~/foss$ ./sdrplay-api-linux-docker/x86_64/sdrplay_apiService &
+[1] 12
+dev@34c615cd3324:~/foss$ SoapySDRUtil --find="driver=sdrplay"
+######################################################
+##     Soapy SDR -- the SDR abstraction library     ##
+######################################################
+
+Found device 0
+  driver = sdrplay
+  label = SDRplay Dev0 RSPduo 22340C4734 - Single Tuner
+  mode = ST
+  serial = 22340C4734
+
+[...]
 ```
 
 ## Installation on a Host Machine
